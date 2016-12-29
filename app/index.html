@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>My Angular App!</title>
+
+   <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+   <script src="app.js"></script>
+</head>
+<body ng-app="flapperNews" ng-controller="MainCtrl as vm">
+<div>
+    {{ vm.test }}
+</div>
+<div ng-repeat="post in vm.posts | orderBy: '-upvotes'">
+    <span ng-click="incrementUpvotes(post)">^</span>
+    {{post.title}} - upvotes: {{post.upvotes}}
+</div>
+<form ng-submit="vm.addPost()">
+    <input type="text" ng-model="vm.title"></input>
+    <button type="submit">Post</button>
+</form>
+</body>
+</html>
