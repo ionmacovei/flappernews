@@ -5,21 +5,52 @@
    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
 </head>
 <body ng-app="flapperNews" ng-controller="MainCtrl as vm">
-<div>
-    {{ vm.test }}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="page-header">
+            <h1>Flapper News</h1>
+        </div>
+
+        <div ng-repeat="post in vm.posts | orderBy:'-upvotes'">
+        <span class="glyphicon glyphicon-thumbs-up"
+              ng-click="vm.incrementUpvotes(post)"></span>
+            {{post.upvotes}}
+            <span style="font-size:20px; margin-left:10px;">
+          <a ng-show="post.link" href="{{post.link}}">
+            {{post.title}}
+          </a>
+          <span ng-hide="post.link">
+            {{post.title}}
+          </span>
+        </span>
+        </div>
+
+        <form ng-submit="vm.addPost()"
+              style="margin-top:30px;">
+            <h3>Add a new post</h3>
+
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Title"
+                       ng-model="vm.title"></input>
+            </div>
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Link"
+                       ng-model="vm.link"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+
+    </div>
 </div>
-<div ng-repeat="post in vm.posts | orderBy: '-upvotes'">
-    <span ng-click="vm.incrementUpvotes(post)">^</span>
-    {{post.title}} - upvotes: {{post.upvotes}}
-</div>
-<form ng-submit="vm.addPost()">
-    <input type="text" ng-model="vm.title"></input>
-    <br>
-    <input type="text" placeholder="Link" ng-model="vm.link"></input>
-    <br>
-    <button type="submit">Post</button>
-</form>
-</body>
+</body>>
 </html>
