@@ -17,8 +17,13 @@ function MainCtrl() {
     ];
     self.addPost = function(){
         if(!self.title || self.title === '') { return; }
-        self.posts.push({title: self.title, upvotes: 0});
+        self.posts.push({
+            title: self.title,
+            upvotes: 0,
+            link: self.link
+        });
         self.title='';
+        self.link='';
     };
     self.incrementUpvotes = function(post) {
         post.upvotes += 1;

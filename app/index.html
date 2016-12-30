@@ -11,11 +11,14 @@
     {{ vm.test }}
 </div>
 <div ng-repeat="post in vm.posts | orderBy: '-upvotes'">
-    <span ng-click="incrementUpvotes(post)">^</span>
+    <span ng-click="vm.incrementUpvotes(post)">^</span>
     {{post.title}} - upvotes: {{post.upvotes}}
 </div>
 <form ng-submit="vm.addPost()">
     <input type="text" ng-model="vm.title"></input>
+    <br>
+    <input type="text" placeholder="Link" ng-model="vm.link"></input>
+    <br>
     <button type="submit">Post</button>
 </form>
 </body>
