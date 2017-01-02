@@ -15,7 +15,11 @@ function MainCtrl(posts) {
         self.posts.push({
             title: self.title,
             upvotes: 0,
-            link: self.link
+            link: self.link,
+            comments: [
+                {author: 'Joe', body: 'Cool pos!', upvotes: 0},
+                {author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
+            ]
         });
         self.title='';
         self.link='';
