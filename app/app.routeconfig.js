@@ -10,14 +10,17 @@ angular.module('flapperNews').config([
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'componetnts/home/home.html',
-                controller: 'MainCtrl',
+                templateUrl: 'componetnts/posts/posts.html',
+                controller: 'PostsController',
                 controllerAs:'vm'
             }).state('posts', {
-            url: '/posts/{id}',
-            templateUrl: 'componetnts/posts/posts.html',
-            controller: 'PostsCtrl',
-            controllerAs: 'vm'
+            url: '/posts/:post_id',
+            templateUrl: 'componetnts/Comment/comment.html',
+            controller: 'CommentController',
+            controllerAs: 'vm',
+            params: {
+                post_id: null
+            }
         });
 
         $urlRouterProvider.otherwise('home');

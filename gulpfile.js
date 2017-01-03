@@ -36,12 +36,18 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('dist/js'))
         .pipe(livereload());
 });
+gulp.task('build', function() {
+    return gulp.src('app/**/*.js')
+        .pipe(concat('build.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(livereload());
+});
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('app/**/*.js', [ 'scripts']);
+    gulp.watch('app/**/*.js', [ 'build']);
     livereload.listen();
 });
 
 // Default Task
-gulp.task('default', [ 'scripts', 'watch']);
+gulp.task('default', [ 'watch']);

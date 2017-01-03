@@ -3,12 +3,12 @@
  */
 'use strict';
 angular.module('flapperNews')
-    .controller('PostsCtrl',PostsCtrl);
-PostsCtrl.$inject=['$stateParams','posts']
-function PostsCtrl($stateParams,posts) {
+    .controller('CommentController',CommentController);
+CommentController.$inject=['$stateParams','posts']
+function CommentController($stateParams, posts) {
 
     var self= this;
-    self.post = posts.posts[$stateParams.id];
+    self.post = posts.posts[$stateParams.post_id];
     self.addComment = function(){
         if(self.body === '') { return; }
         self.post.comments.push({
