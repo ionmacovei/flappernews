@@ -2,11 +2,19 @@
  * Created by imacovei on 1/3/2017.
  */
 angular.module('flapperNews').controller('PostsController',PostsController);
-PostsController.$inject =['posts'];
-function PostsController(posts) {
+PostsController.$inject =['PostsService'];
+function PostsController(PostsService) {
     var self = this;
     self.title="";
-    self.posts =posts.posts;
+    self.posts=[];
+    initController();
+    function initController(){
+        debugger
+        PostsService.getAll().then(function (posts) {
+            self.posts = posts;
+        });
+
+    }
     self.addPost = function(){
         if(!self.title || self.title === '') { return; }
         self.posts.push({

@@ -4,7 +4,7 @@
 'use strict';
 angular.module('flapperNews', ['ui.router'])
     .controller('MainCtrl',MainCtrl);
-MainCtrl.$inject=['posts'];
+MainCtrl.$inject=['PostsService'];
 function MainCtrl(posts) {
          var self = this;
          self.title="";
@@ -67,7 +67,7 @@ angular.module('flapperNews').factory('posts', [function(){
 'use strict';
 angular.module('flapperNews')
     .controller('PostsCtrl',PostsCtrl);
-PostsCtrl.$inject=['$stateParams','posts']
+PostsCtrl.$inject=['$stateParams','PostsService']
 function PostsCtrl($stateParams,posts) {
 
     var self= this;
