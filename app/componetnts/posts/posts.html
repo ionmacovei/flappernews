@@ -1,32 +1,39 @@
 <div class="page-header">
-    <h3>
-        <a ng-show="vm.post.link" href="{{vm.post.link}}">
-            {{vm.post.title}}
-        </a>
-        <span ng-hide="post.link">
-        {{vm.post.title}}
-      </span>
-    </h3>
+    <h1>Flapper News</h1>
 </div>
-
-<div ng-repeat="comment in vm.post.comments | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-          ng-click="incrementUpvotes(comment)"></span>
-    {{comment.upvotes}} - by {{comment.author}}
+<div ng-repeat="post in vm.posts | orderBy:'-upvotes'">
+        <span class="glyphicon glyphicon-thumbs-up"
+              ng-click="vm.incrementUpvotes(post)"></span>
+    {{post.upvotes}}
     <span style="font-size:20px; margin-left:10px;">
-      {{comment.body}}
-    </span>
+          <a ng-show="post.link" href="{{post.link}}">
+            {{post.title}}
+          </a>
+          <span ng-hide="post.link">
+            {{post.title}}
+          </span>
 
+        </span>
+    <span>
+  <a href="#/posts/{{$index}}">Comments</a>
+    </span>
 </div>
-<form ng-submit="vm.addComment()"
+
+<form ng-submit="vm.addPost()"
       style="margin-top:30px;">
-    <h3>Add a new comment</h3>
+    <h3>Add a new post</h3>
 
     <div class="form-group">
         <input type="text"
                class="form-control"
-               placeholder="Comment"
-               ng-model="vm.body"></input>
+               placeholder="Title"
+               ng-model="vm.title"></input>
+    </div>
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Link"
+               ng-model="vm.link"></input>
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
