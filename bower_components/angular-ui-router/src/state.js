@@ -321,7 +321,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *   return result;
    * });
    *
-   * $stateProvider.state('home', {
+   * $stateProvider.state('posts', {
    *   views: {
    *     'contact.list': { controller: 'ListController' },
    *     'contact.item': { controller: 'ItemController' }
@@ -330,9 +330,9 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *
    * // ...
    *
-   * $state.go('home');
-   * // Auto-populates list and item views with /partials/home/contact/list.html,
-   * // and /partials/home/contact/item.html, respectively.
+   * $state.go('posts');
+   * // Auto-populates list and item views with /partials/posts/contact/list.html,
+   * // and /partials/posts/contact/item.html, respectively.
    * </pre>
    *
    * @param {string} name The name of the builder function to decorate. 
@@ -369,8 +369,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * Registers a state configuration under a given state name. The stateConfig object
    * has the following acceptable properties.
    *
-   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
-   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+   * @param {string} name A unique state name, e.g. "posts", "about", "contacts".
+   * To create a parent/child state use a dot, e.g. "about.sales", "posts.newest".
    * @param {object} stateConfig State configuration object.
    * @param {string|function=} stateConfig.template
    * <a id='template'></a>
@@ -401,7 +401,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by 
    *     applying the current state
    *
-   * <pre>templateUrl: "home.html"</pre>
+   * <pre>templateUrl: "posts.html"</pre>
    * <pre>templateUrl: function(params) {
    *     return myTemplates[params.pageId]; }</pre>
    *
@@ -489,7 +489,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *   more details on acceptable patterns )
    *
    * examples:
-   * <pre>url: "/home"
+   * <pre>url: "/posts"
    * url: "/users/:userid"
    * url: "/books/{bookid:[a-zA-Z_-]}"
    * url: "/books/{categoryid:int}"
@@ -662,18 +662,18 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * // Some state name examples
    *
    * // stateName can be a single top-level name (must be unique).
-   * $stateProvider.state("home", {});
+   * $stateProvider.state("posts", {});
    *
    * // Or it can be a nested state name. This state is a child of the
-   * // above "home" state.
-   * $stateProvider.state("home.newest", {});
+   * // above "posts" state.
+   * $stateProvider.state("posts.newest", {});
    *
    * // Nest states as deeply as needed.
-   * $stateProvider.state("home.newest.abc.xyz.inception", {});
+   * $stateProvider.state("posts.newest.abc.xyz.inception", {});
    *
    * // state() returns $stateProvider, so you can chain state declarations.
    * $stateProvider
-   *   .state("home", {})
+   *   .state("posts", {})
    *   .state("about", {})
    *   .state("contacts", {});
    * </pre>

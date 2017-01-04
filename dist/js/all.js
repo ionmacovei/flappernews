@@ -17,7 +17,7 @@ function MainCtrl(posts) {
             upvotes: 0,
             link: self.link,
             comments: [
-                {author: 'Joe', body: 'Cool pos!', upvotes: 0},
+                {author: 'Joe', body: 'Cool posrrdfddfdrun4rr!', upvotes: 0},
                 {author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
             ]
         });
@@ -39,13 +39,14 @@ angular.module('flapperNews').config([
 
         $stateProvider
             .state('home', {
-                url: '/home',
-                templateUrl: 'componetnts/home/home.html',
-                controller: 'MainCtrl',
+                url: '/posts',
+                templateUrl: 'componetnts/posts/posts.html',
+                controller: 'PostsController',
                 controllerAs:'vm'
-            }).state('posts', {
-            url: '/posts/{id}',
-            templateUrl: 'componetnts/posts/posts.html',
+            })
+            .state('posts', {
+            url: '/Comment/{id}',
+            templateUrl: 'componetnts/Comment/Comment.html',
             controller: 'PostsCtrl',
             controllerAs: 'vm'
         });

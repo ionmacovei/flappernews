@@ -25,11 +25,17 @@ gulp.task('sass', function() {
         .pipe(sass())
         .pipe(gulp.dest('dist/css'));
 });
+gulp.task('build', function() {
+    return gulp.src('app/**/*.js')
+        .pipe(concat('build.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(livereload())});
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('app/**/*.js')
         .pipe(concat('all.js'))
+        .pipe(livereload())
         .pipe(gulp.dest('dist/js'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
@@ -39,9 +45,9 @@ gulp.task('scripts', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('app/**/*.js', [ 'scripts']);
+    gulp.watch('app/**/*.js', [ 'build']);
     livereload.listen();
 });
 
 // Default Task
-gulp.task('default', [ 'scripts', 'watch']);
+gulp.task('default', [ 'build', 'watch']);
