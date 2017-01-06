@@ -1,0 +1,12 @@
+require('./app.js');
+require('./app.config.js');
+require('./services/auth-service.js');
+require('./services/comment-service.js');
+require('./services/posts-service.js');
+require('./componetnts/authentification/auth-controler.js');
+require('./componetnts/comment/comment-controller.js');
+require('./componetnts/navbar/navbar-controller.js');
+require('./componetnts/posts/posts-controller.js');
+require('./directives/posts/post-directive.js');
+require('./sharing/constants/flapperNewsConstants.js');
+require('./sharing/interceptors/unauthorisedInterceptor.js');
